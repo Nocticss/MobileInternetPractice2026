@@ -56,8 +56,8 @@ public class FunctionActivity extends AppCompatActivity {
 
     // 初始化数据
     private void initData() {
-        // 天气显示
-        tvWeatherFunc.setText(MainActivity.location + " " + MainActivity.weather + " " + MainActivity.temp + "℃");
+        // 天气显示（固定城市为北京）
+        tvWeatherFunc.setText("北京 " + MainActivity.weather + " " + MainActivity.temp + "℃");
 
         // 初始化吃的推荐列表
         eatSunny = new ArrayList<>();
@@ -137,27 +137,29 @@ public class FunctionActivity extends AppCompatActivity {
             }
         });
 
-        // 我的菜单（支持吃/穿/玩）
+        // 我的菜单（统一跳转到AddMenuActivity，支持eat/wear/play）
         btnMenu.setOnClickListener(v -> {
             Intent intent = new Intent();
-            if ("eat".equals(type)) {
-                intent.setClass(FunctionActivity.this, MenuActivity.class);
-            } else if ("wear".equals(type) || "play".equals(type)) {
-                intent.setClass(FunctionActivity.this, MenuWearPlayActivity.class);
-                intent.putExtra("type", type);
-            } else {
-                tvResult.setText("该功能仅支持「吃/穿/玩」模块哦～");
-                return;
-            }
+            intent.setClass(FunctionActivity.this, AddMenuActivity.class);
+            intent.putExtra("type", type); // 传递类型（eat/wear/play）
             startActivity(intent);
         });
 
         // 个人中心
-        btnCenter.setOnClickListener(v -> startActivity(new Intent(FunctionActivity.this, UserCenterActivity.class)));
+        btnCenter.setOnClickListener(v -> startActivity(new Intent(this, UserCenterActivity.class)));
     }
 
-    // 随机推荐吃的
+    // 随机推荐吃的（和穿/玩逻辑完全统一，优先自定义菜单）
     private void randomEat() {
+        // 优先使用自定义菜单（修复错误：改为正确的getEatMenu方法）
+        List<String> customMenu = CustomMenuManager.getEatMenu(this, LoginActivity.currentUser);
+        if (!customMenu.isEmpty()) {
+            String result = customMenu.get(new Random().nextInt(customMenu.size()));
+            tvResult.setText("🍜 推荐吃：" + result);
+            return;
+        }
+
+        // 默认推荐（按天气）
         List<String> recommendList;
         if ("雨".equals(MainActivity.weather) || "阴".equals(MainActivity.weather)) {
             recommendList = eatRainy;

@@ -13,7 +13,7 @@ import java.util.LinkedList;
 public class AddMenuActivity extends AppCompatActivity {
     private EditText etMenu;
     private Button btnSave;
-    private String type; // wear/play
+    private String type; // eat/wear/play 【新增支持eat】
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,11 @@ public class AddMenuActivity extends AppCompatActivity {
         etMenu = findViewById(R.id.et_menu);
         btnSave = findViewById(R.id.btn_save);
 
-        // 设置标题
-        if ("wear".equals(type)) {
+        // 设置标题和提示【新增eat的判断】
+        if ("eat".equals(type)) {
+            setTitle("添加食物");
+            etMenu.setHint("输入食物名称（如：北京烤鸭）");
+        } else if ("wear".equals(type)) {
             setTitle("添加穿搭");
             etMenu.setHint("输入穿搭名称（如：卫衣）");
         } else if ("play".equals(type)) {
@@ -43,7 +46,10 @@ public class AddMenuActivity extends AppCompatActivity {
             }
 
             LinkedList<String> menuList;
-            if ("wear".equals(type)) {
+            // 【新增eat的菜单获取】
+            if ("eat".equals(type)) {
+                menuList = CustomMenuManager.getEatMenu(this, LoginActivity.currentUser);
+            } else if ("wear".equals(type)) {
                 menuList = CustomMenuManager.getWearMenu(this, LoginActivity.currentUser);
             } else {
                 menuList = CustomMenuManager.getPlayMenu(this, LoginActivity.currentUser);
@@ -51,7 +57,10 @@ public class AddMenuActivity extends AppCompatActivity {
 
             menuList.add(content);
 
-            if ("wear".equals(type)) {
+            // 【新增eat的菜单保存】
+            if ("eat".equals(type)) {
+                CustomMenuManager.saveEatMenu(this, LoginActivity.currentUser, menuList);
+            } else if ("wear".equals(type)) {
                 CustomMenuManager.saveWearMenu(this, LoginActivity.currentUser, menuList);
             } else {
                 CustomMenuManager.savePlayMenu(this, LoginActivity.currentUser, menuList);

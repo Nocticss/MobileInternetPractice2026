@@ -18,6 +18,26 @@
         android:background="#F5F5F5"
         android:textColor="#333333"/>
 
+    <!-- 历史记录面板（默认隐藏） -->
+    <LinearLayout
+        android:id="@+id/ll_history_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#F8F8F8"
+        android:padding="15dp"
+        android:visibility="gone"
+        android:layout_marginHorizontal="16dp">
+
+        <TextView
+            android:id="@+id/tv_history_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="暂无历史记录"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
     <!-- 标题 -->
     <TextView
         android:id="@+id/tv_main_title"
@@ -41,7 +61,7 @@
         android:gravity="center"
         android:elevation="5dp"/>
 
-    <!-- 更换地点/背景 + 城市输入框（核心修改：输入框默认显示，和更换地点按钮相邻） -->
+    <!-- 只保留更换背景按钮 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,46 +69,14 @@
         android:layout_marginTop="10dp"
         android:gravity="center_vertical">
 
-        <!-- 城市输入框：默认显示，不再隐藏 -->
-        <EditText
-            android:id="@+id/et_city_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="输入城市名"
-            android:textColorHint="#333333"
-            android:padding="16dp"
-            android:background="#F5F5F5"/>
-
-        <!-- 更换地点按钮 -->
-        <Button
-            android:id="@+id/btn_change_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="更换地点"
-            android:layout_marginLeft="10dp"
-            android:background="#F5F5F5"
-            android:textColor="#333333"/>
-
-        <!-- 更换背景按钮 -->
         <Button
             android:id="@+id/btn_change_bg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="更换背景"
-            android:layout_marginLeft="10dp"
             android:background="#F5F5F5"
             android:textColor="#333333"/>
 
-        <!-- 确认切换城市按钮：保留（如需删除可直接移除） -->
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="确认切换城市"
-            android:onClick="checkCity"
-            android:layout_marginLeft="10dp"
-            android:background="#0066CC"
-            android:textColor="#FFFFFF"/>
     </LinearLayout>
 
     <!-- 用户名 -->
@@ -103,9 +91,7 @@
         android:gravity="center"
         android:textStyle="bold"/>
 
-    <!-- 【已完全删除】吃什么模块（添加食物输入框、按钮、结果文本） -->
-
-    <!-- 趣味小部件：骰子 + 金币（保留原有完整结构）-->
+    <!-- 趣味小部件：骰子 + 硬币（图片已缩小）-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -113,12 +99,12 @@
         android:gravity="center"
         android:layout_marginTop="25dp">
 
-        <!-- 骰子图片 -->
+        <!-- 骰子图片 → 已缩小尺寸 -->
         <ImageView
             android:id="@+id/iv_dice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_dice"/>
 
         <Button
             android:id="@+id/btn_dice"
@@ -140,12 +126,12 @@
             android:layout_marginRight="25dp"
             android:textStyle="bold"/>
 
-        <!-- 金币图片 -->
+        <!-- 硬币图片 → 已缩小尺寸 -->
         <ImageView
             android:id="@+id/iv_coin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_coin"/>
 
         <Button
             android:id="@+id/btn_coin"
@@ -164,9 +150,10 @@
             android:textSize="28sp"
             android:textColor="#0066CC"
             android:textStyle="bold"/>
+
     </LinearLayout>
 
-    <!-- 核心选择按钮（保留原有完整结构） -->
+    <!-- 核心选择按钮 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -206,6 +193,7 @@
             android:background="#0066CC"
             android:textColor="#FFFFFF"
             android:elevation="8dp"/>
+
     </LinearLayout>
 
 </LinearLayout>

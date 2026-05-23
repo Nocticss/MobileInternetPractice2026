@@ -7,9 +7,10 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 public class CustomMenuManager {
-    // 区分不同类型的菜单
+    // 区分不同类型的菜单（新增吃什么的SP命名常量）
     private static final String SP_NAME_WEAR = "WearMenu_";
     private static final String SP_NAME_PLAY = "PlayMenu_";
+    private static final String SP_NAME_EAT = "EatMenu_"; // 新增：吃什么的SP名称
     private static final String KEY_LIST = "list";
 
     // 获取穿什么菜单
@@ -46,13 +47,32 @@ public class CustomMenuManager {
         sp.edit().putString(KEY_LIST, menuStr).apply();
     }
 
-    // 清空指定类型菜单
+    // 新增：获取吃什么菜单（和穿/玩逻辑完全一致）
+    public static LinkedList<String> getEatMenu(Context context, String user) {
+        SharedPreferences sp = context.getSharedPreferences(SP_NAME_EAT + user, Context.MODE_PRIVATE);
+        String menu = sp.getString(KEY_LIST, "");
+        if (menu.isEmpty()) {
+            return new LinkedList<>();
+        }
+        return new LinkedList<>(Arrays.asList(menu.split(",")));
+    }
+
+    // 新增：保存吃什么菜单（和穿/玩逻辑完全一致）
+    public static void saveEatMenu(Context context, String user, LinkedList<String> menu) {
+        SharedPreferences sp = context.getSharedPreferences(SP_NAME_EAT + user, Context.MODE_PRIVATE);
+        String menuStr = String.join(",", menu);
+        sp.edit().putString(KEY_LIST, menuStr).apply();
+    }
+
+    // 清空指定类型菜单（新增支持eat类型）
     public static void clearMenu(Context context, String user, String type) {
         String spName = "";
         if ("wear".equals(type)) {
             spName = SP_NAME_WEAR + user;
         } else if ("play".equals(type)) {
             spName = SP_NAME_PLAY + user;
+        } else if ("eat".equals(type)) { // 新增：支持清空吃什么菜单
+            spName = SP_NAME_EAT + user;
         }
         if (!spName.isEmpty()) {
             context.getSharedPreferences(spName, Context.MODE_PRIVATE).edit().clear().apply();
