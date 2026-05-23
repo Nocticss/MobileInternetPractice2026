@@ -6,29 +6,34 @@
     android:padding="20dp">
 
     <TextView
+        android:id="@+id/tv_weather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="我的菜单"
-        android:textSize="20sp"/>
+        android:text="天气"
+        android:background="#2196F3"
+        android:textColor="#fff"
+        android:padding="10dp"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/tv_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="16sp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"/>
 
     <Button
         android:id="@+id/btn_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="添加菜品"
-        android:layout_marginTop="20dp"/>
+        android:text="添加菜品"/>
 
     <Button
         android:id="@+id/btn_clear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="清空菜单"/>
+        android:text="清空菜单"
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

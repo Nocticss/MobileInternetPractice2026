@@ -6,16 +6,18 @@
     android:padding="20dp">
 
     <EditText
-        android:id="@+id/et_food"
+        android:id="@+id/et_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="输入菜品名称"/>
+        android:hint="输入内容"
+        android:textSize="18sp"/>
 
     <Button
         android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="保存到菜单"
-        android:layout_marginTop="20dp"/>
-
+        android:text="保存"
+        android:layout_marginTop="20dp"
+        android:background="#0066CC"
+        android:textColor="#FFFFFF"/>
 </LinearLayout>

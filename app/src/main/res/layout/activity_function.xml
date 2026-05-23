@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@drawable/bg_main">
+
+    <!-- 全局天气 -->
+    <TextView
+        android:id="@+id/tv_weather_func"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:padding="8dp"
+        android:background="#0066CC"
+        android:gravity="center"
+        android:text="北京实时天气：22℃ 晴"/>
+
+    <!-- 标题 -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="#333333"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"/>
+
+    <!-- 随机结果 -->
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textColor="#0066CC"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"/>
+
+    <!-- 功能按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_random"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="随机推荐"
+            android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/btn_menu"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="我的菜单"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/btn_center"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:text="个人中心"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+</LinearLayout>

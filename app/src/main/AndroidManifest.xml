@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mobileinternetpractice">
 
-    <!-- 网络权限 必须加，用来获取北京实时天气 -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -38,6 +37,11 @@
             android:name=".MainActivity"
             android:exported="false" />
 
+        <!-- 功能页（吃/穿/玩） -->
+        <activity
+            android:name=".FunctionActivity"
+            android:exported="false" />
+
         <!-- 我的菜单 -->
         <activity
             android:name=".MenuActivity"
@@ -51,6 +55,17 @@
         <!-- 个人中心 -->
         <activity
             android:name=".UserCenterActivity"
+            android:exported="false" />
+
+        <!-- 👇 在这里加上新增的两个页面！👇 -->
+        <!-- 新增：添加穿/玩菜单 -->
+        <activity
+            android:name=".AddMenuActivity"
+            android:exported="false" />
+
+        <!-- 新增：穿/玩菜单展示 -->
+        <activity
+            android:name=".MenuWearPlayActivity"
             android:exported="false" />
 
     </application>

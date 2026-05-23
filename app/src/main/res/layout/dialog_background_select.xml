@@ -1,33 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="20dp">
 
     <TextView
-        android:id="@+id/tv_weather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="天气"
-        android:background="#2196F3"
-        android:textColor="#fff"
-        android:padding="10dp"
-        android:gravity="center"/>
-
-    <TextView
-        android:id="@+id/tv_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:text="选择背景图"
         android:textSize="20sp"
-        android:layout_marginTop="40dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_bg_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
 
     <Button
-        android:id="@+id/btn_logout"
+        android:id="@+id/btn_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="退出登录"
-        android:layout_marginTop="50dp"/>
-
+        android:text="取消"
+        android:background="#F5F5F5"
+        android:textColor="#333333"/>
 </LinearLayout>
