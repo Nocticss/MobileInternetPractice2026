@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mobileinternetpractice">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MobileInternetPractice">
+
+        <!-- 启动页 -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 登录页 -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+        <!-- 注册页 -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+
+        <!-- 主页 -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- 功能页（吃/穿/玩） -->
+        <activity
+            android:name=".FunctionActivity"
+            android:exported="false" />
+
+        <!-- 我的菜单 -->
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false" />
+
+        <!-- 添加菜品 -->
+        <activity
+            android:name=".AddFoodActivity"
+            android:exported="false" />
+
+        <!-- 个人中心 -->
+        <activity
+            android:name=".UserCenterActivity"
+            android:exported="false" />
+
+        <!-- 👇 在这里加上新增的两个页面！👇 -->
+        <!-- 新增：添加穿/玩菜单 -->
+        <activity
+            android:name=".AddMenuActivity"
+            android:exported="false" />
+
+        <!-- 新增：穿/玩菜单展示 -->
+        <activity
+            android:name=".MenuWearPlayActivity"
+            android:exported="false" />
+
+    </application>
+
+</manifest>
