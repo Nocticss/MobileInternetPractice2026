@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="20dp"
+    android:gravity="center"
+    android:background="#FFFFFF"> <!-- 新增对话框背景，提升视觉体验 -->
+
+    <!-- 背景1预览（适配jpg格式，可点击） -->
+    <ImageView
+        android:id="@+id/iv_bg_1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+    android:layout_marginRight="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="#F5F5F5"
+    android:padding="2dp"/>
+
+    <!-- 背景2预览 -->
+    <ImageView
+        android:id="@+id/iv_bg_2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:layout_marginRight="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="#F5F5F5"
+        android:padding="2dp"/>
+
+    <!-- 背景3预览 -->
+    <ImageView
+        android:id="@+id/iv_bg_3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="#F5F5F5"
+        android:padding="2dp"/>
+
+</LinearLayout>

@@ -2,7 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mobileinternetpractice">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 基础网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 网络状态权限（城市切换所需） -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <!-- 读取相册权限（修改背景图所需，适配不同Android版本） -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"
+        android:minSdkVersion="33"/>
 
     <application
         android:allowBackup="true"
@@ -12,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileInternetPractice">
 
-        <!-- 启动页 -->
+        <!-- 启动页（程序入口） -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -25,7 +34,8 @@
         <!-- 登录页 -->
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="登录"/>
 
         <!-- 注册页 -->
         <activity
@@ -35,35 +45,35 @@
         <!-- 主页 -->
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/app_name"/>
 
         <!-- 功能页（吃/穿/玩） -->
         <activity
             android:name=".FunctionActivity"
             android:exported="false" />
 
-        <!-- 我的菜单 -->
+        <!-- 我的菜单页 -->
         <activity
             android:name=".MenuActivity"
             android:exported="false" />
 
-        <!-- 添加菜品 -->
+        <!-- 添加菜品页 -->
         <activity
             android:name=".AddFoodActivity"
             android:exported="false" />
 
-        <!-- 个人中心 -->
+        <!-- 个人中心页 -->
         <activity
             android:name=".UserCenterActivity"
             android:exported="false" />
 
-        <!-- 👇 在这里加上新增的两个页面！👇 -->
-        <!-- 新增：添加穿/玩菜单 -->
+        <!-- 添加穿/玩菜单页 -->
         <activity
             android:name=".AddMenuActivity"
             android:exported="false" />
 
-        <!-- 新增：穿/玩菜单展示 -->
+        <!-- 穿/玩菜单展示页 -->
         <activity
             android:name=".MenuWearPlayActivity"
             android:exported="false" />

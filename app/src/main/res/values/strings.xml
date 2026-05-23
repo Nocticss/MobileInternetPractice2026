@@ -1,3 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MobileInternetPractice</string>
+    <!-- 问题1：APP名称 + 首页标题 -->
+    <string name="app_name">选择困难决定器</string>
+    <string name="main_title">选择困难决定器</string>
+
+    <!-- 通用按钮/提示文字（适配你的布局） -->
+    <string name="btn_change_location">更换地点</string>
+    <string name="btn_change_bg">更换背景</string>
+    <string name="btn_history">历史记录</string>
+    <string name="btn_dice">骰子</string>
+    <string name="btn_coin">金币</string>
+    <string name="btn_eat">吃什么</string>
+    <string name="btn_wear">穿什么</string>
+    <string name="btn_play">玩什么</string>
+    <string name="btn_add_food">添加到菜单</string>
+
+    <!-- 输入框提示文字 -->
+    <string name="hint_food_add">输入要添加的食物（如：火锅）</string>
+    <string name="hint_city_name">输入要切换的城市名</string>
+
+    <!-- 状态提示文字 -->
+    <string name="tv_selected_food_default">未选择</string>
+    <string name="toast_food_empty">请先添加食物！</string>
+    <string name="toast_food_add_success">添加成功：%s</string>
+    <string name="toast_city_empty">请输入城市名！</string>
+    <string name="toast_city_not_exist">城市不存在，请检查名称！</string>
+    <string name="toast_api_error">API请求失败：%s</string>
+    <string name="toast_city_change_success">切换到%s成功！</string>
+
+    <!-- 历史记录相关 -->
+    <string name="history_title">历史记录</string>
+    <string name="history_empty">暂无记录</string>
 </resources>

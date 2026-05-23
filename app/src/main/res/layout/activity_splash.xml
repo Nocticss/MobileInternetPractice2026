@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="吃什么决定器"
+        android:text="选择困难症决定器"
         android:textSize="30sp"/>
 
 </LinearLayout>
