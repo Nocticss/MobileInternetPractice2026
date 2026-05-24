@@ -137,21 +137,21 @@ public class FunctionActivity extends AppCompatActivity {
             }
         });
 
-        // 我的菜单（统一跳转到AddMenuActivity，支持eat/wear/play）
+        // ===================== 关键修改：跳转到【菜单管理页】，和截图功能一致 =====================
+        // 我的菜单 → 进入可查看、添加、删除的菜单管理页（和你截图的页面对应）
         btnMenu.setOnClickListener(v -> {
-            Intent intent = new Intent();
-            intent.setClass(FunctionActivity.this, AddMenuActivity.class);
+            Intent intent = new Intent(FunctionActivity.this, MenuWearPlayActivity.class);
             intent.putExtra("type", type); // 传递类型（eat/wear/play）
             startActivity(intent);
         });
+        // ======================================================================================
 
         // 个人中心
         btnCenter.setOnClickListener(v -> startActivity(new Intent(this, UserCenterActivity.class)));
     }
 
-    // 随机推荐吃的（和穿/玩逻辑完全统一，优先自定义菜单）
+    // 随机推荐吃的（优先使用自定义菜单）
     private void randomEat() {
-        // 优先使用自定义菜单（修复错误：改为正确的getEatMenu方法）
         List<String> customMenu = CustomMenuManager.getEatMenu(this, LoginActivity.currentUser);
         if (!customMenu.isEmpty()) {
             String result = customMenu.get(new Random().nextInt(customMenu.size()));
@@ -170,9 +170,8 @@ public class FunctionActivity extends AppCompatActivity {
         tvResult.setText("🍜 推荐吃：" + result);
     }
 
-    // 随机推荐穿的（优先自定义菜单）
+    // 随机推荐穿的（优先使用自定义菜单）
     private void randomWear() {
-        // 优先使用自定义菜单
         List<String> customMenu = CustomMenuManager.getWearMenu(this, LoginActivity.currentUser);
         if (!customMenu.isEmpty()) {
             String result = customMenu.get(new Random().nextInt(customMenu.size()));
@@ -195,9 +194,8 @@ public class FunctionActivity extends AppCompatActivity {
         tvResult.setText("👕 推荐穿：" + result);
     }
 
-    // 随机推荐玩的（优先自定义菜单）
+    // 随机推荐玩的（优先使用自定义菜单）
     private void randomPlay() {
-        // 优先使用自定义菜单
         List<String> customMenu = CustomMenuManager.getPlayMenu(this, LoginActivity.currentUser);
         if (!customMenu.isEmpty()) {
             String result = customMenu.get(new Random().nextInt(customMenu.size()));

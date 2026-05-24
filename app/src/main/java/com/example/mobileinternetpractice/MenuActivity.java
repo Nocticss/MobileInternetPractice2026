@@ -44,7 +44,7 @@ public class MenuActivity extends AppCompatActivity {
         tvWeather.setLayoutParams(params);
         // 修正5：Gravity需要完整类名
         tvWeather.setGravity(Gravity.CENTER);
-        tvWeather.setText(MainActivity.location + " 实时天气：" + MainActivity.temp + "℃ " + MainActivity.weather);
+        tvWeather.setText(MainActivity.LOCATION+ " 实时天气：" + MainActivity.temp + "℃ " + MainActivity.weather);
 
         tvList = findViewById(R.id.tv_list);
         btnAdd = findViewById(R.id.btn_add);

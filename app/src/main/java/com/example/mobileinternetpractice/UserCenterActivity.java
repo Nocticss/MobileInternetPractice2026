@@ -18,7 +18,7 @@ public class UserCenterActivity extends AppCompatActivity {
         Button btnLogout = findViewById(R.id.btn_logout);
 
         // 设置天气文字
-        tvWeather.setText(MainActivity.location + " 实时天气：" + MainActivity.temp + "℃ " + MainActivity.weather);
+        tvWeather.setText(MainActivity.LOCATION + " 实时天气：" + MainActivity.temp + "℃ " + MainActivity.weather);
 
         // 设置用户信息
         tvInfo.setText("当前用户：" + LoginActivity.currentUser);

@@ -41,7 +41,7 @@ public class LocationSelectDialog extends Dialog implements View.OnClickListener
         Button btnCancel = findViewById(R.id.btn_cancel);
 
         // 填充当前地点
-        etLocation.setText(MainActivity.location);
+        etLocation.setText(MainActivity.LOCATION);
 
         btnConfirm.setOnClickListener(this);
         btnCancel.setOnClickListener(this);

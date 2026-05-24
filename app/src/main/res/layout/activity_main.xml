@@ -18,7 +18,7 @@
         android:background="#F5F5F5"
         android:textColor="#333333"/>
 
-    <!-- 历史记录面板（默认隐藏） -->
+    <!-- 历史记录面板（可滑动 + 清除按钮）-->
     <LinearLayout
         android:id="@+id/ll_history_panel"
         android:layout_width="match_parent"
@@ -29,12 +29,30 @@
         android:visibility="gone"
         android:layout_marginHorizontal="16dp">
 
-        <TextView
-            android:id="@+id/tv_history_content"
+        <!-- 可滑动的历史记录区域 -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:overScrollMode="never">
+
+            <TextView
+                android:id="@+id/tv_history_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="暂无历史记录"
+                android:textSize="16sp"/>
+
+        </ScrollView>
+
+        <!-- 清除历史记录按钮 -->
+        <Button
+            android:id="@+id/btn_clear_history"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="暂无历史记录"
-            android:textSize="16sp"/>
+            android:text="清除历史记录"
+            android:layout_marginTop="10dp"
+            android:background="#E53935"
+            android:textColor="#FFFFFF"/>
 
     </LinearLayout>
 
@@ -43,32 +61,47 @@
         android:id="@+id/tv_main_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/main_title"
+        android:text="选择困难症决定器"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="#333333"
         android:layout_gravity="center"
         android:layout_marginBottom="15dp"/>
 
-    <TextView
-        android:id="@+id/tv_weather_global"
+    <!-- 天气模块 -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
-        android:padding="10dp"
+        android:orientation="horizontal"
         android:background="#0066CC"
-        android:gravity="center"
-        android:elevation="5dp"/>
+        android:padding="10dp"
+        android:elevation="5dp"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:id="@+id/tv_weather"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="加载中..."
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/tv_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加载中..."
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"/>
+    </LinearLayout>
 
-    <!-- 只保留更换背景按钮 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical">
-
         <Button
             android:id="@+id/btn_change_bg"
             android:layout_width="wrap_content"
@@ -76,7 +109,6 @@
             android:text="更换背景"
             android:background="#F5F5F5"
             android:textColor="#333333"/>
-
     </LinearLayout>
 
     <!-- 用户名 -->
@@ -91,7 +123,7 @@
         android:gravity="center"
         android:textStyle="bold"/>
 
-    <!-- 趣味小部件：骰子 + 硬币（图片已缩小）-->
+    <!-- 骰子 + 金币 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,13 +131,11 @@
         android:gravity="center"
         android:layout_marginTop="25dp">
 
-        <!-- 骰子图片 → 已缩小尺寸 -->
         <ImageView
             android:id="@+id/iv_dice"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_dice"/>
-
         <Button
             android:id="@+id/btn_dice"
             android:layout_width="90dp"
@@ -116,7 +146,6 @@
             android:background="#0066CC"
             android:textColor="#FFFFFF"
             android:elevation="5dp"/>
-
         <TextView
             android:id="@+id/tv_dice_result"
             android:layout_width="wrap_content"
@@ -126,13 +155,11 @@
             android:layout_marginRight="25dp"
             android:textStyle="bold"/>
 
-        <!-- 硬币图片 → 已缩小尺寸 -->
         <ImageView
             android:id="@+id/iv_coin"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_coin"/>
-
         <Button
             android:id="@+id/btn_coin"
             android:layout_width="90dp"
@@ -142,7 +169,6 @@
             android:background="#0066CC"
             android:textColor="#FFFFFF"
             android:elevation="5dp"/>
-
         <TextView
             android:id="@+id/tv_coin_result"
             android:layout_width="wrap_content"
@@ -153,11 +179,10 @@
 
     </LinearLayout>
 
-    <!-- 核心选择按钮 -->
+    <!-- 功能按钮 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         android:layout_marginTop="30dp">
@@ -171,25 +196,23 @@
             android:background="#0066CC"
             android:textColor="#FFFFFF"
             android:elevation="8dp"/>
-
         <Button
             android:id="@+id/btn_wear"
             android:layout_width="240dp"
             android:layout_height="70dp"
+            android:layout_marginTop="25dp"
             android:text="穿什么"
             android:textSize="24sp"
-            android:layout_marginTop="25dp"
             android:background="#0066CC"
             android:textColor="#FFFFFF"
             android:elevation="8dp"/>
-
         <Button
             android:id="@+id/btn_play"
             android:layout_width="240dp"
             android:layout_height="70dp"
+            android:layout_marginTop="25dp"
             android:text="玩什么"
             android:textSize="24sp"
-            android:layout_marginTop="25dp"
             android:background="#0066CC"
             android:textColor="#FFFFFF"
             android:elevation="8dp"/>

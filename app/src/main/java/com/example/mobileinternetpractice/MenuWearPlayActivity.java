@@ -18,7 +18,7 @@ import java.util.LinkedList;
 public class MenuWearPlayActivity extends AppCompatActivity {
     private TextView tvList;
     private Button btnAdd, btnClear;
-    private String type; // wear/play
+    private String type; // wear / play / eat
     private String user;
     private LinkedList<String> menuList;
 
@@ -44,19 +44,22 @@ public class MenuWearPlayActivity extends AppCompatActivity {
         );
         tvWeather.setLayoutParams(params);
         tvWeather.setGravity(Gravity.CENTER);
-        tvWeather.setText(MainActivity.location + " 实时天气：" + MainActivity.temp + "℃ " + MainActivity.weather);
+        tvWeather.setText(MainActivity.LOCATION + " 实时天气：" + MainActivity.temp + "℃ " + MainActivity.weather);
 
         // 初始化控件
         tvList = findViewById(R.id.tv_list);
         btnAdd = findViewById(R.id.btn_add);
         btnClear = findViewById(R.id.btn_clear);
 
-        // 设置标题
+        // ===================== 修复：加入吃什么的标题 =====================
         if ("wear".equals(type)) {
             setTitle("我的穿搭菜单");
         } else if ("play".equals(type)) {
             setTitle("我的游玩菜单");
+        } else if ("eat".equals(type)) {
+            setTitle("我的美食菜单");
         }
+        // ===============================================================
 
         // 加载菜单
         loadMenu();
@@ -82,12 +85,16 @@ public class MenuWearPlayActivity extends AppCompatActivity {
         });
     }
 
+    // ===================== 核心修复：加入 eat 加载逻辑 =====================
     // 加载菜单
     private void loadMenu() {
         if ("wear".equals(type)) {
             menuList = CustomMenuManager.getWearMenu(this, user);
-        } else {
+        } else if ("play".equals(type)) {
             menuList = CustomMenuManager.getPlayMenu(this, user);
+        } else if ("eat".equals(type)) {
+            // 这里补上了 吃什么 的菜单加载！
+            menuList = CustomMenuManager.getEatMenu(this, user);
         }
 
         if (menuList.isEmpty()) {
@@ -96,7 +103,9 @@ public class MenuWearPlayActivity extends AppCompatActivity {
             tvList.setText(String.join("\n", menuList));
         }
     }
+    // ====================================================================
 
+    // ===================== 修复：加入 eat 删除保存逻辑 =====================
     // 删除最后一个
     private void deleteLastItem() {
         if (menuList.isEmpty()) {
@@ -105,15 +114,20 @@ public class MenuWearPlayActivity extends AppCompatActivity {
         }
 
         menuList.removeLast();
+
         if ("wear".equals(type)) {
             CustomMenuManager.saveWearMenu(this, user, menuList);
-        } else {
+        } else if ("play".equals(type)) {
             CustomMenuManager.savePlayMenu(this, user, menuList);
+        } else if ("eat".equals(type)) {
+            // 这里补上了 吃什么 的删除保存
+            CustomMenuManager.saveEatMenu(this, user, menuList);
         }
 
         loadMenu();
         Toast.makeText(this, "已删除最后一项", Toast.LENGTH_SHORT).show();
     }
+    // ====================================================================
 
     @Override
     protected void onResume() {
